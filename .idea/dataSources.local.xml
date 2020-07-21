@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - marketingplatform@localhost" uuid="106cb9ff-28ae-4440-9c43-a273303a8d66">
+      <secret-storage>master_key</secret-storage>
+      <user-name>ana</user-name>
+      <schema-pattern>marketingplatform.*</schema-pattern>
+      <default-schemas>mysql.*</default-schemas>
+    </data-source>
+  </component>
+</project>
