@@ -17,8 +17,10 @@ class CreateNotificationsTable extends Migration
         Schema::create("notifications", function (Blueprint $table) {
             $table->bigIncrements("id");
             $table->string("subject", 200);
+            $table->integer("number_of_emails");
             $table->text("body");
-            $table->string("profile_image")->nullable();
+            $table->boolean("status");
+            $table->string("photo")->nullable();
             $table->timestamps();
         });
     }
