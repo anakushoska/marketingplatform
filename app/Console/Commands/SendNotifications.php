@@ -44,12 +44,12 @@ class SendNotifications extends Command
     public function handle()
     {
 
-        // $validTime= Carbon::now()->subHours(2)->toDateTimeString();
+        $validTime= Carbon::now()->subHours(2)->toDateTimeString();
 
-        // $notification=Notification::where("created_at", "<", $validTime)
-        //             ->where("status", false)
-        //             ->first();
-        $notification=Notification::where("id", 205)->first();
+        $notification=Notification::where("created_at", "<", $validTime)
+                    ->where("status", false)
+                    ->first();
+        // $notification=Notification::where("id", 205)->first();
 
                         $notification->subject=$notification->updateSubject();
 
@@ -59,14 +59,14 @@ class SendNotifications extends Command
                                 ->where("notification_id",$notification->id)
                                 ->get();
 
-                                foreach($recipients as $recipient){
-                                    Mail::to($recipient->email)->send(new NotificationMail($notification, $mostVowelsWord));
+                         foreach($recipients as $recipient){
+                                Mail::to($recipient->email)->send(new NotificationMail($notification, $mostVowelsWord));
 
-                                    DB::table('ricipient_notifications')
-                                        ->where("notification_id",$notification->id)
-                                        ->where("email",$recipient->email)
-                                        ->update(['status' => true]);
-                                }
+                                DB::table('ricipient_notifications')
+                                    ->where("notification_id",$notification->id)
+                                    ->where("email",$recipient->email)
+                                    ->update(['status' => true]);
+                       }
 
         $notification->status=true;
         $notification->save();
