@@ -23,7 +23,7 @@ class NotificationController extends Controller
             $notifications = Notification::all();
 
 
-            return view('dashboard.notifications.index')->with('notifications',$notifications);
+            return view('dashboard.notifications.all_index')->with('notifications',$notifications);
 
     }
 
@@ -36,7 +36,7 @@ class NotificationController extends Controller
 
     public function create()
     {
-        return view('dashboard.notifications.add_edit');
+        return view('dashboard.notifications.edit_add');
     }
 
     /**
@@ -48,8 +48,6 @@ class NotificationController extends Controller
     public function store(Request $request)
     {
         {
-
-
 
             $request->validate([
                 "subject" => "required|string|max:100",
